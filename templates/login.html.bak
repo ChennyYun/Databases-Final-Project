@@ -1,0 +1,41 @@
+<html>
+<head>
+</head>
+<body>
+
+{% if not (staff) %}
+<form action="/showStaffLogin" method= "post">
+    <button name="StaffLogin" type="submit"> Staff Login</button>
+</form>
+<form action="/customerloginAuth" method= "POST">
+	<input type="email" name = "username" placeholder="username" required/> </br>
+	 <input type="password" name = "password" placeholder="password" required/></br>
+	<input type="submit" value = Login />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+{% endif %}
+
+{% if (staff) %}
+<form action="/login" method= "post">
+    <button name="customerLogin" type="submit"> Customer Login</button>
+</form>
+<form action="/staffloginAuth" method="POST">
+	<input type="email" name = "username" placeholder="username" required/> </br>
+	 <input type="password" name = "password" placeholder="password" required/></br>
+	<input type="submit" value = Login />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+{% endif %}
+
+<a href="/">Go back</a>
+
+</body>
+
+
+</html>

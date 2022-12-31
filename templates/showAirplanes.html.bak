@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+
+{% if error %}
+<p> Error: {{error}} </p>
+{% endif %}
+{% if message %}
+{{message}}
+{% endif %}
+{% if (username) %}
+ <p> Logged in as: {{username}} </p>
+ <a href="/logout">Logout</a>
+
+{% endif %}
+{% if (query) %}
+	{% for airplane in query%}
+		<style>	
+			div{
+				border: 2px solid black;
+			}
+		</style>
+		<div>
+			{% if query.length == 1 %}
+				{{flight}}
+			{% endif %}
+			{% for element in flight%}
+				<p >{{element}}: {{flight[element]}} </p>
+				<!-- {{value}} -->
+			{% endfor%}
+		</div> 
+	  
+	        <hr>
+	{% endfor %}
+	{% endif %}
+<a href="/">Go back</a>
+
+</body>
+
+
+</html>

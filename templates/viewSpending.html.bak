@@ -1,0 +1,89 @@
+<!--Done -->
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+{% if (error) %}
+<p> Error: {{error}} </p>
+{% endif %}
+
+{% if (username) %}
+ <p> Logged in as: {{username}} </p>
+ <form action = "/logout" method = "POST">
+ <input type = "submit" value = "logout"/>
+ </form>
+{% endif %}
+</br>
+{% if (data_six_months) %}
+<label> Spendings for last six months </label>
+	<table>
+  <tr>
+    <th>Purchase Date</th>
+    <th>Price </th>
+  </tr>
+  {% for purchase in data_six_months %}
+  <tr>
+    <td> {{purchase['purchase_date']}}</td>
+    <td> {{purchase['sold_price']}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+</br>
+{% if (data_last_year) %}
+<label> Spendings for last twelve months </label>
+	<table>
+  <tr>
+    <th>Purchase Date</th>
+    <th>Price </th>
+  </tr>
+  {% for purchase in data_last_year %}
+  <tr>
+    <td> {{purchase['purchase_date']}}</td>
+    <td> {{purchase['sold_price']}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+{% if (total_spendings) %}
+Total Spendings: ${{total_spendings}}
+</br>
+{% endif %}
+</br>
+{% if (data_range) %}
+<label> Spendings for specified range </label>
+	<table>
+  <tr>
+    <th>Purchase Date</th>
+    <th>Price </th>
+  </tr>
+  {% for purchase in data_range %}
+  <tr>
+    <td> {{purchase['purchase_date']}}</td>
+    <td> {{purchase['sold_price']}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+<label> Specify range to view spendings </label>
+<form action = "/selectRangeSpending", method = "POST">
+	<input type = "hidden" name = "total_spendings" value = "{{total_spendings}}"/>
+	<input type = "hidden" name = "six_months" value = "{{data_six_months}}" />
+	<input type = "hidden" name = "one_year" value = "{{data_last_year}}" />
+	
+	<label> start date
+	<input type = "date" name = "start_date" required/>
+	</label>
+	<label> end_date
+	<input type = "date" name = "end_date" max = {{today}} required/>
+	</label>
+	<input type = "submit" value = "track spendings"/>
+</form>
+<a href="/">Go back</a>
+</body>
+
+</html>

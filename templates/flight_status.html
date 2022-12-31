@@ -1,0 +1,52 @@
+<!--TODO! -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+{% if not username %}
+	<a href="/login">Login</a>
+	<a href="/register">Register</a>
+	
+		
+	</form>
+{% endif %}
+
+{% if username %}
+	<a href="/logout">Logout</a> 
+	<a href="/remove_account">Remove Account</a>
+	
+{% endif %}
+
+{% if (query) %}
+	
+	{% for flight in query%}
+		<style>	
+			div{
+				border: 2px solid black;
+			}
+		</style>
+		<div>
+			{% if query.length == 1 %}
+				{{flight}}
+			{% endif %}
+			{% for element in flight%}
+				{% if element in ['status','flight_number','departure_date','arrival_date']%}
+				<p >{{element}}: {{flight[element]}} </p>
+				<!-- {{value}} -->
+			{% endif %}
+			{% endfor %}
+			
+		</div> 
+	  
+	        <hr>
+	{% endfor %}
+
+	{% endif %}
+	<a href="/">Go back</a>
+</body>
+
+</html>

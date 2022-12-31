@@ -1,0 +1,37 @@
+<html>
+<head>
+</head>
+<body>
+
+{% if error %}
+<p> Error: {{error}} </p>
+{% endif %}
+{% if message %}
+{{message}}
+{% endif %}
+{% if (username) %}
+ <p> Logged in as: {{username}} </p>
+ <a href="/logout">Logout</a> 
+<form action="/createflight" method= "post">
+    <input type = "number" name = "flight_number" placeholder = "flight number" required/> </br>
+	<input type = "text" name = "airline_name" placeholder = "Airline Name" required/> </br>
+	<label> departure date: <input type = "date" name = "departure_date" required/> </label> </br>
+	<label> departure time: <input type = "time" name = "departure_time" required/> </label> </br>
+	<input type = "text" name = "arrival_airport" placeholder = "Arrival Airport" required/> </br>
+	<input type = "text" name = "departure_airport" placeholder = "Departure Airport" required/> </br>
+	<label> arrival date: <input type = "date" name = "arrival_date" required/> </label> </br>
+	<label> arrival time: <input type = "time" name = "arrival_time" required/> </label> </br>
+	<input type = "number" name = "base_price" min = 0, step = '0.01' placeholder = "base price" required/> </br>
+	<input type = "text" name = "airplane_id" placeholder = "airplane ID" required/> </br>
+	<input type = "text" name = "status" placeholder = "status (on time or delayed)" required/> </br> 
+	<input type = "submit" value = "add flight"/> 
+</form>
+
+{% endif %}
+
+<a href="/">Go back</a>
+
+</body>
+
+
+</html>

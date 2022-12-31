@@ -1,0 +1,51 @@
+<!--TODO! -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+{% if not message %}
+	<a href="/login">Login</a>
+	<a href="/register">Register</a>
+	<form action = "/lookForFlights" method = "POST" >
+		<select name = "trip_type">
+			<option value = ""> --Pick type of flight-- </option>
+			<option value = "one_way"> One way trip </option>
+			<option value = "round_trip"> Round trip </option>
+		</select>
+	<input type="text" name = "departure_airport" placeholder = "departure airport" required/> </br>
+	<input type="text" name = "arrival_airport" placeholder="arrival airport" required/> </br>
+	<input type="date" name = "departure_date" required/>  </br>
+	<input type="date" name = "return_date"/> </br>
+	<input type="submit" value = Search />
+	</form>
+	<form action = "/searchFlightStatus" method = "POST">
+		
+	</form>
+{% endif %}
+
+{% if query %}
+	<p> here </p>
+	{% for flight in query%}
+		<style>	
+			div{
+				border: 2px solid black;
+				
+			}
+		</style>
+		<div>
+			{% for element in flight%}
+				{{element}}
+			{% endfor%}
+			
+		</div>
+	        <p>{{line}}</p>
+	        <hr>
+	{% endfor %}
+	{% endif %}
+</body>
+
+</html>

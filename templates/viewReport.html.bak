@@ -1,0 +1,28 @@
+<!--Done -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+{% if error %}
+<p> Error: {{error}} </p>
+{% endif %}
+{% if message %}
+{{message}}
+{% endif %}
+{% if (username) %}
+ <p> Logged in as: {{username}} </p>
+ <a href="/logout">Logout</a> 
+{% endif %}
+</br>
+{% if (query) %}
+Total Tickets sold: {{query['count(id)']}} </br>
+	{% endif %}
+	
+<a href="/">Go back</a>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!--Done -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+{% if error %}
+<p> Error: {{error}} </p>
+{% endif %}
+{% if message %}
+{{message}}
+{% endif %}
+{% if (username) %}
+ <p> Logged in as: {{username}} </p>
+ <a href="/logout">Logout</a> 
+{% endif %}
+</br>
+{% if (month_data) %}
+Total Revenue last month: {{month_data['sum(sold_price)']}} </br>
+{% endif %}
+{% if (year_data) %}
+Total Revenue last year: {{year_data['sum(sold_price)']}} </br>
+{% endif %}
+	
+<a href="/">Go back</a>
+</body>
+
+</html>

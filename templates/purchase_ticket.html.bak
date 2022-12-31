@@ -1,0 +1,39 @@
+<!--TODO! -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+{% 	if (username) %}
+ <p> Logged in as: {{username}} </p>
+ <form action = "/logout" method = "POST">
+ <input type = "submit" value = "logout"> </input>
+ </form>
+ {% if (price) %}
+	<p> Total Price: {{price}} </p>
+	{% endif %}
+ {% endif %}
+ {% if flights %}
+	<form action = "/confirmPurchase" method = "POST">
+	
+		<select name = "card_type"> 
+			<option value = ""> --Debit or Credit-- </option>
+			<option value = "Debit"> Debit </option>
+			<option value = "Credit"> Credit</option>
+		</select>
+		<input type = "hidden" name = "flights" value = "{{flights}}"/>
+		<input type = "hidden" name = "email" value = "{{username}}"/>
+		<input type = "text" name = "card_number"  placeholder = "card number XXXX-XXXX-XXXX-XXXX" required/>
+		<input type  = "text" name = "card_expiration_date" placeholder = "expiration date MM/YY" required/> 
+		<input type = "text" name = "CVV" placeholder = "CVV" required/>
+		<input type = "text" name = "name_on_card" placeholder = "Name on Card" required/>
+		<input type = "submit"> Purchase </input>
+	</form>
+{% endif %}
+<a href="/">Go back</a>
+</body>
+
+</html>

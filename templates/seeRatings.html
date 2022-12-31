@@ -1,0 +1,39 @@
+<!--Done -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+{% if error %}
+<p> Error: {{error}} </p>
+{% endif %}
+{% if message %}
+{{message}}
+{% endif %}
+{% if (username) %}
+ <p> Logged in as: {{username}} </p>
+ <a href="/logout">Logout</a> 
+{% endif %}
+
+{% if comment_data %}
+<label>
+Comments:
+{% for comment in comment_data%}
+	<p > {{comment['comment']}}</p>
+{% endfor %}
+</label>
+{% endif %}
+{% if rate_data %}
+<label> Average rating:
+	<p >{{rate_data['avg(ratings)']}} </p>
+	</label>
+{% endif %}
+
+
+<a href="/">Go back</a>
+</body>
+
+</html>

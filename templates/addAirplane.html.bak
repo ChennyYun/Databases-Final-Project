@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body>
+
+{% if error %}
+<p> Error: {{error}} </p>
+{% endif %}
+{% if message %}
+{{message}}
+{% endif %}
+{% if (username) %}
+ <p> Logged in as: {{username}} </p>
+ <a href="/logout">Logout</a> 
+<form action="/addAirplane" method= "post">
+    <input type = "text" name = "ID" placeholder = "airplane ID" required/> </br>
+	<input type = "text" name = "airline_name" placeholder = "airline name" required/></br>
+	<label value = "number of seats: " ></br> <input type = "number" name = "number_of_seats" min = 1  placeholder = "number of seats" required/>
+	</label> </br>
+	<input type = "submit" value = "add airplane to system" /> </br>
+</form>
+
+{% endif %}
+
+<a href="/">Go back</a>
+
+</body>
+
+
+</html>

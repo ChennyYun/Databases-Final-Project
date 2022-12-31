@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+{% if message %}
+<p> {{message}} </p> </br>
+{% endif %}
+{% if not username %}
+	<a href="/login">Login</a>
+	<a href="/register">Register</a>
+	
+		
+	</form>
+{% endif %}
+
+{% if username %}
+	<a href="/logout">Logout</a> 
+	{% endif %}
+	<form action = "/lookForFlights" method = "POST" >
+		<p> Search for flights </p>
+		<select name = "trip_type">
+			<option value = ""> --Pick type of flight-- </option>
+			<option value = "one_way"> One way trip </option>
+			<option value = "round_trip"> Round trip </option>
+		</select>
+	<input type="text" name = "departure_airport" placeholder = "departure airport" required/> </br>
+	<input type="text" name = "arrival_airport" placeholder="arrival airport" required/> </br>
+	Departure date: <input type="date" name = "departure_date" required/>  </br>
+	return date: <input type="date" name = "return_date"/> </br>
+	<input type="submit" value = Search >
+	</form>
+	<form action = "/searchFlightStatus" method = "POST">
+		<p> Check flight status </p>
+		<input type = "text" name = "airline_name" placeholder = "airline name" required/> </br>
+		<input type = "text" name = "flight_number" placeholder = "flight number" required/> </br>
+		Departure date: <input type = "date" name = "departure_date" placeholder = "departure date" required/> </br>
+		Arrival date: <input type = "date" name = "arrival_date" placeholder = "arrival date" required/> </br>
+		<input type = "submit" value = Search>
+	</form>
+{% if isCustomer %}
+	<a href="/view_flights_customer"> View Flights <br> </a>
+	<a href = "/viewSpending"> Track Spendings </a>
+	
+{% endif %}
+{% if isStaff %}
+	<a href="/view_flights_staff"> View Flights <br> </a> 
+	<a href = "/create_flights_redirect"> Create new flights <br> </a>
+	<a href = "/add_airplane_redirect"> Add airplane <br> </a>
+	<a href = "/add_airport_redirect"> Add airport <br> </a>
+	<a href = "/lookupFrequentCustomer">frequent customers <br> </a>
+	<form action = "/viewReport" method = "post" >
+	<label> start date
+	<input type = "date" name = "start_date" required/>
+	</label>
+	<label> end_date
+	<input type = "date" name = "end_date" max = {{today}} required/>
+	</label>
+	<input type = "submit" value = "track tickets sold"/>
+	</form>
+	<a href = "/revenue">earned revenue <br> </a>
+	<a href = "/topDestination">Top destinations<br> </a>
+	
+	<form action = "/customerLookUp" method = "POST">
+		<input type = "email" name = "customer_email" placeholder = "customer email" required/>
+		<input type = "submit" value = "find customer's flights"/>
+	</form>
+		
+{% endif %}
+</body>
+
+</html>
